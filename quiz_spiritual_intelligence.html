@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اختبار الذكاء الروحي والعاطفي — 80 سؤالاً</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FBF8F2;
+  --paper2:#F4EFE5;
+  --ink:#23201B;
+  --ink-soft:#5E584D;
+  --line:#E4DCCB;
+  --accent:#B4552D;
+  --accent-deep:#8F3F1E;
+  --olive:#6E7B5E;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Cairo',sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  min-height:100vh;
+  line-height:1.8;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;
+  background-image:radial-gradient(#00000008 1px, transparent 1px);
+  background-size:22px 22px;
+}
+
+.wrap{
+  max-width:640px;margin:0 auto;min-height:100vh;
+  display:flex;flex-direction:column;padding:24px 20px 48px;
+}
+
+.screen{display:none;flex:1;flex-direction:column;animation:fade .5s ease both}
+.screen.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.hero{flex:1;display:flex;flex-direction:column;justify-content:center;gap:20px;text-align:center}
+.kicker{
+  display:inline-block;margin:0 auto;font-size:.8rem;letter-spacing:2px;
+  color:var(--accent);border:1px solid var(--line);padding:6px 18px;border-radius:999px;
+  background:#fff;
+}
+h1{font-family:'Amiri',serif;font-size:clamp(2.2rem,8vw,3.2rem);font-weight:700;line-height:1.4}
+h1 em{font-style:italic;color:var(--accent-deep)}
+.lead{color:var(--ink-soft);font-size:1.02rem;max-width:46ch;margin:0 auto}
+.btn{
+  font-family:'Cairo',sans-serif;font-weight:700;font-size:1.05rem;cursor:pointer;
+  background:var(--ink);color:var(--paper);border:none;border-radius:14px;
+  padding:16px 44px;transition:transform .15s ease, background .2s;
+  box-shadow:0 6px 18px #23201b22;margin:8px auto 0;display:block;
+}
+.btn:hover{background:var(--accent-deep);transform:translateY(-2px)}
+.btn:active{transform:scale(.97)}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.legend{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:28px;text-align:right;
+}
+.legend div{
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:10px 14px;font-size:.85rem;color:var(--ink-soft);
+}
+.legend b{color:var(--ink)}
+footer{margin-top:auto;text-align:center;font-size:.75rem;color:#A79E8D;padding-top:40px}
+
+.topbar{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.counter{font-family:'Amiri',serif;font-size:1.3rem;white-space:nowrap}
+.bar{flex:1;height:6px;background:var(--paper2);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .45s cubic-bezier(.4,0,.2,1)}
+.axis-tag{
+  font-size:.75rem;color:var(--olive);font-weight:700;letter-spacing:.5px;
+  margin-bottom:6px;
+}
+.q-card{
+  background:#fff;border:1px solid var(--line);border-radius:18px;
+  padding:26px 24px;box-shadow:0 4px 14px #23201b0d;
+}
+.question{font-family:'Amiri',serif;font-size:clamp(1.25rem,4.5vw,1.5rem);font-weight:700;line-height:1.9;margin-bottom:22px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  font-family:'Cairo',sans-serif;font-size:.98rem;text-align:right;cursor:pointer;
+  background:var(--paper);border:1.5px solid var(--line);border-radius:12px;
+  padding:14px 18px;display:flex;align-items:center;gap:12px;
+  transition:border-color .15s, background .15s, transform .1s;color:var(--ink);
+}
+.opt .dot{
+  width:16px;height:16px;border-radius:50%;border:2px solid #C9BFA8;flex-shrink:0;
+  transition:border-color .15s, background .15s;
+}
+.opt:hover{border-color:var(--accent)}
+.opt.sel{background:#FDF3EC;border-color:var(--accent);font-weight:700}
+.opt.sel .dot{border-color:var(--accent);background:var(--accent)}
+.opt:active{transform:scale(.98)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px;min-height:52px}
+.link-btn{
+  background:none;border:none;font-family:'Cairo',sans-serif;color:var(--ink-soft);
+  cursor:pointer;font-size:.9rem;padding:10px 6px;
+}
+.link-btn:hover{color:var(--ink)}
+.btn.next{padding:13px 40px;margin:0}
+
+.result{flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;text-align:center}
+.score-ring{position:relative;width:190px;height:190px;margin:0 auto}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring circle{fill:none;stroke-width:9;stroke-linecap:round}
+.ring-bg{stroke:var(--paper2)}
+.ring-fg{stroke:var(--accent);transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1)}
+.score-num{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
+  font-family:'Amiri',serif;
+}
+.score-num b{font-size:3rem;line-height:1}
+.score-num span{font-size:.85rem;color:var(--ink-soft)}
+.verdict{font-family:'Amiri',serif;font-size:1.5rem;font-weight:700;max-width:34ch;margin:0 auto}
+.again{background:none;border:1.5px solid var(--ink);color:var(--ink);
+       box-shadow:none;margin-top:6px}
+.again:hover{background:var(--ink);color:var(--paper)}
+
+@media (min-width:700px){
+  .legend{grid-template-columns:repeat(4,1fr)}
+  .q-card{padding:34px 36px}
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ======== شاشة البداية ======== -->
+  <section id="start" class="screen active">
+    <div class="hero">
+      <span class="kicker">اختبار روحي · ٨٠ سؤالاً</span>
+      <h1>اكتشف <em>ذكاءك الروحي</em> والعاطفي</h1>
+      <button class="btn" onclick="startQuiz()">ابدأ الاختبار</button>
+    </div>
+    <footer>مدة الاختبار التقريبية: ٦ – ٨ دقائق</footer>
+  </section>
+
+  <!-- ======== شاشة الأسئلة ======== -->
+  <section id="quiz" class="screen">
+    <div class="topbar">
+      <div class="counter" id="counter">١ / ٨٠</div>
+      <div class="bar"><i id="barFill"></i></div>
+    </div>
+    <div class="axis-tag" id="axisTag"></div>
+    <div class="q-card">
+      <div class="question" id="qText"></div>
+      <div class="opts" id="opts"></div>
+    </div>
+    <div class="nav">
+      <button class="link-btn" id="prevBtn" onclick="prevQ()">→ السابق</button>
+      <button class="btn next" id="nextBtn" onclick="nextQ()" disabled>التالي</button>
+    </div>
+  </section>
+
+  <!-- ======== شاشة النتيجة ======== -->
+  <section id="result" class="screen">
+    <div class="result">
+      <span class="kicker">نتيجتك النهائية</span>
+      <div class="score-ring">
+        <svg width="190" height="190">
+          <circle class="ring-bg" cx="95" cy="95" r="84"></circle>
+          <circle class="ring-fg" id="ringFg" cx="95" cy="95" r="84"></circle>
+        </svg>
+        <div class="score-num"><b id="scoreNum">0</b><span>من 100</span></div>
+      </div>
+      <div class="verdict" id="verdict"></div>
+      <button class="btn again" onclick="restart()">إعادة الاختبار</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ========== محاور الذكاء الروحي والعاطفي: 8 محاور × 10 أسئلة = 80 ========== */
+const AXES = [
+ {
+  "name": "التأمل والتعبد",
+  "qs": [
+   "هل تمارس التأمل أو الصلاة بخشوع تام في الساعات المتأخرة من الليل؟",
+   "هل تشعر بالتعاطف الشديد وتبكي عند رؤية مشهد إنساني مؤثر في الأخبار؟",
+   "هل تبحث عن الحكمة والدروس العميقة وراء الابتلاءات والصعاب التي تواجهك؟",
+   "هل تجد نفسك قادراً على مسامحة من أخطأ في حقك بدافع السلام الداخلي؟",
+   "هل تفكر كثيراً في أصل الكون والغاية الأسمى من الوجود الإنساني؟",
+   "هل تستشعر وجود قوة إلهية ترعاك وتوجه خطاك في لحظات الضياع؟",
+   "هل تقدم الدعم العاطفي والإنصات الصادق لصديق يمر بأزمة نفسية؟",
+   "هل تشعر بالارتباط الروحي مع كل الكائنات الحية وتتمنى لها الخير؟",
+   "هل تحرص على أداء الطقوس الروحية والدينية كجزء أساسي من يومك؟",
+   "هل تمتلك القدرة على قراءة مشاعر الآخرين من نظرة أعينهم فقط؟"
+  ]
+ },
+ {
+  "name": "التأمل والتعبد",
+  "qs": [
+   "هل يثير اهتمامك دراسة الفلسفات الروحية والتصوف وتاريخ الأديان؟",
+   "هل تتأثر نفسيتك بالكامل عند وجود طاقة سلبية أو مشاحنات في المكان؟",
+   "هل تحاول دائماً رؤية الجوانب الإيجابية والخيرة في الأشخاص السيئين؟",
+   "هل تشعر بالامتنان الصادق للنعم الصغيرة كوجود سقف يحميك وعائلة تحبك؟",
+   "هل تجد في العطاء ومساعدة الفقراء سعادة تفوق سعادة الأخذ والتملك؟",
+   "هل تمتلك حساً إنسانياً يجعلك تشعر بألم الشخص الصامت بجانبك؟",
+   "هل تفكر في الأثر والذكرى الطيبة التي ستتركها في العالم بعد رحيلك؟",
+   "هل تلجأ للطبيعة والصمت لتجديد طاقتك الروحية عندما تجف مشاعرك؟",
+   "هل يسهل عليك التعبير عن حبك وامتنانك للمقربين منك بالكلمات والأفعال؟",
+   "هل تؤمن بأن كل حدث في حياتك يقع لسبب روحي معين يخدم تطورك؟"
+  ]
+ },
+ {
+  "name": "التأمل والتعبد",
+  "qs": [
+   "هل تحافظ على هدوء قلبك وسكينته أثناء الأزمات الكبرى المفاجئة؟",
+   "هل تشعر بالدهشة والذهول أمام جمال وعظمة هندسة الكون المنظمة؟",
+   "هل تتجنب الخوض في النميمة والقيل والقال ترفعاً وطلباً لسلامة صدرك؟",
+   "هل تجد متعة في قراءة الأشعار والقصائد الروحية التي تخاطب الوجدان؟",
+   "هل تمتلك وعياً عاطفياً يمنعك من تفريغ إحباطك المهني في أفراد أسرتك؟",
+   "هل تشعر بأن السعادة الحقيقية تنبع من الداخل وليس من المظاهر المادية؟",
+   "هل تحرص على نشر التفاؤل والأمل بين زملائك المحبطين في العمل؟",
+   "هل تبحث عن التناغم والانسجام الروحي في علاقاتك العاطفية والزوجية؟",
+   "هل تستطيع الاعتذار بصدق ونبل عندما تدرك أنك جرحت مشاعر أحدهم؟",
+   "هل تشعر بالسلام والرضا التام عن توزيع الأرزاق والفرص في الحياة؟"
+  ]
+ },
+ {
+  "name": "التأمل والتعبد",
+  "qs": [
+   "هل تمتلك القدرة على احتواء غضب شريك حياتك بذكاء ورفق؟",
+   "هل يثير فضولك البحث في علم الطاقة الحيوية وتأثيرها على الروح؟",
+   "هل تتأثر بعمق بالقصص التي تتحدث عن التضحية والإيثار من أجل الآخرين؟",
+   "هل تحرص على تنقية قلبك من أحقاد الماضي وضغائن الخلافات القديمة؟",
+   "هل تجد في البكاء الصادق وسيلة لتطهير الروح والوجدان من الهموم؟",
+   "هل تؤمن بوجود روابط روحية خفية تجمعك بأشخاص دون سابق معرفة؟",
+   "هل تستطيع فصل قيمتك الإنسانية عن منصبك الوظيفي أو مستواك المالي؟",
+   "هل تشعر بالبهجة الغامرة عند رؤية طفل يبتسم لك في الطريق العام؟",
+   "هل تبذل جهداً واعياً لتطوير مهارة الصبر والتحمل في المواقف المستفزة؟",
+   "هل تمتلك القدرة على مواساة شخص فقد عزيزاً بكلمات تلمس قلبه؟"
+  ]
+ },
+ {
+  "name": "التأمل والتعبد",
+  "qs": [
+   "هل تحرص على زيارة الأماكن المقدسة والتاريخية لتستشعر عبقها الروحي؟",
+   "هل تجد نفسك تبتسم تلقائياً عندما ترى مظهراً من مظاهر التراحم بين الناس؟",
+   "هل تؤمن بأن النوايا الطيبة هي أساس كل عمل ناجح ومبارك في الحياة؟",
+   "هل تستطيع السيطرة على غيرتك العاطفية وتحويلها إلى ثقة ودعم؟",
+   "هل تشعر بالمسؤولية الأخلاقية والروحية تجاه حماية الضعفاء والحيوانات؟",
+   "هل تقضي أوقات العطلة في العمل التطوعي الخيري لخدمة المجتمع؟",
+   "هل يسهل عليك فهم الدوافع النفسية الكامنة وراء تصرفات الناس الغريبة؟",
+   "هل تشعر بأنك تمتلك رسالة إنسانية نبيلة يجب عليك تأديتها في حياتك؟",
+   "هل تتجنب إطلاق الأحكام القاسية على مصائر الآخرين وظروفهم الصعبة؟",
+   "هل تجد في الهدوء الداخلي ملجأك الآمن عندما يمتلئ العالم بالصخب؟"
+  ]
+ },
+ {
+  "name": "التأمل والتعبد",
+  "qs": [
+   "هل تؤمن بأن الحب غير المشروط هو أسمى مراتب الوعي الإنساني؟",
+   "هل تمتلك الحساسية لتمييز الصدق من الزيف في نبرة كلام المتحدث؟",
+   "هل تحرص على ممارسة تمارين التنفس العميق لتهدئة روعك الروحي؟",
+   "هل تشعر بالرضا عن ذاتك الأخلاقية حتى لو لم يحقق عملك أرباحاً هائلة؟",
+   "هل تستمتع بالنقاشات العميقة التي تتناول أسرار النفس البشرية والروح؟",
+   "هل تجد في العزلة المؤقتة فرصة لمناجاة الخالق وترتيب أوراقك الروحية؟",
+   "هل تمتلك القدرة على تحويل مشاعر الحزن إلى طاقة إبداعية ملهمة؟",
+   "هل تشعر بالأمان والسكينة داخلياً رغم عدم وضوح معالم مستقبلك؟",
+   "هل تهتم بالجانب الروحي والأخلاقي للشخص قبل تقييم مستواه العقلي؟",
+   "هل تحب مساعدة الغرباء في الشارع دون انتظار شكر أو مقابل؟"
+  ]
+ },
+ {
+  "name": "التأمل والتعبد",
+  "qs": [
+   "هل تؤمن بأن العدالة الإلهية ستأخذ مجراها في النهاية مهما طال الظلم؟",
+   "هل تستطيع كبح رغبتك في الانتقام وتفويض الأمر للقدر والعدالة؟",
+   "هل تشعر بالانسجام الروحي عند سماع التراتيل أو الأناشيد الدينية العذبة؟",
+   "هل تمتلك صدراً رحباً يتسع لسماع شكاوى وهموم أصدقائك لساعات؟",
+   "هل تحرص على بناء واحة من السلام والود داخل محيط منزلك؟",
+   "هل تجد في الاستغفار والتأمل وسيلة للتخلص من تأنيب الضمير السلبي؟",
+   "هل تشعر بأن روحك تكبر وتنضج مع كل تجربة عاطفية تخوضها؟",
+   "هل تهتم بمعرفة أسرار الشغف الإنساني وكيفية إشعال جذوته عاطفياً؟",
+   "هل تؤمن بأن العقل والقلب يجب أن يعملا معاً لتحقيق التوازن الروحي؟",
+   "هل تستطيع إظهار الضعف العاطفي أمام من تحب دون خوف من استغلاله؟"
+  ]
+ },
+ {
+  "name": "التأمل والتعبد",
+  "qs": [
+   "هل تشعر بالامتنان للأشخاص الذين خيبوا أملك لأنهم علموك القوة؟",
+   "هل تحب الجلوس في الأماكن التي تتسم بالوقار والسكينة الروحية؟",
+   "هل تمتلك مهارة تهدئة روع الأطفال الخائفين واحتوائهم عاطفياً؟",
+   "هل تؤمن بأن الحياة رحلة قصيرة لتطهير الروح والارتقاء بها للأفضل؟",
+   "هل تشعر بالترابط مع تاريخ أجدادك وتستمد منهم القوة الروحية؟",
+   "هل تستطيع الحفاظ على ابتسامتك الودودة حتى في الأيام العاصفة نفسياً؟",
+   "هل تجد في كتابة رسائل الدعم والمحبة للآخرين متعة روحية خاصة؟",
+   "هل تشعر بأن الحب هو القوة الوحيدة القادرة على إنقاذ هذا العالم؟",
+   "هل تمتلك اليقين بأن القادم أفضل وأن بعد كل عسر يسراً عاطفياً وروحياً؟",
+   "هل تشعر بأن روحك متصلة بالكون الكبير في نسيج واحد رائع؟"
+  ]
+ }
+];
+
+/* نظام العلامات: الحد الأقصى = 80 × 2 = 160 → تُقاس على 100 */
+const TOTAL_Q = 80;
+const MAX_SCORE = TOTAL_Q * 2; // 160
+
+const OPTIONS = [
+  {label:"أبداً", v:0},
+  {label:"أحياناً", v:0.5},
+  {label:"غالباً", v:1},
+  {label:"دائماً", v:2}
+];
+
+let flat = [], answers = [], idx = 0;
+
+function buildFlat(){
+  flat = [];
+  AXES.forEach((a, ai) => a.qs.forEach(q => flat.push({axis: ai, text: q})));
+}
+
+function show(id){
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0});
+}
+
+function startQuiz(){
+  buildFlat();
+  answers = new Array(TOTAL_Q).fill(null);
+  idx = 0;
+  show('quiz');
+  renderQ();
+}
+
+const arNum = n => String(n).replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
+
+function renderQ(){
+  const q = flat[idx];
+  document.getElementById('counter').textContent = arNum(idx+1) + " / " + arNum(TOTAL_Q);
+  document.getElementById('barFill').style.width = (idx/TOTAL_Q*100) + "%";
+  document.getElementById('axisTag').textContent = "المحور: " + AXES[q.axis].name;
+  document.getElementById('qText').textContent = q.text;
+
+  const box = document.getElementById('opts');
+  box.innerHTML = "";
+  OPTIONS.forEach(o => {
+    const b = document.createElement('button');
+    b.className = 'opt' + (answers[idx] === o.v ? ' sel' : '');
+    b.innerHTML = '<span class="dot"></span>' + o.label;
+    b.onclick = () => {
+      answers[idx] = o.v;
+      box.querySelectorAll('.opt').forEach(x => x.classList.remove('sel'));
+      b.classList.add('sel');
+      document.getElementById('nextBtn').disabled = false;
+      setTimeout(nextQ, 260);
+    };
+    box.appendChild(b);
+  });
+
+  document.getElementById('prevBtn').style.visibility = idx === 0 ? 'hidden' : 'visible';
+  document.getElementById('nextBtn').textContent = idx === TOTAL_Q - 1 ? "عرض النتيجة" : "التالي";
+  document.getElementById('nextBtn').disabled = answers[idx] === null;
+}
+
+function nextQ(){
+  if(answers[idx] === null) return;
+  if(idx < TOTAL_Q - 1){ idx++; renderQ(); }
+  else showResult();
+}
+
+function prevQ(){ if(idx > 0){ idx--; renderQ(); } }
+
+/* ========== النتيجة ========== */
+function verdict(s){
+  if(s >= 85) return "ذكاء مرتفع جداً";
+  if(s >= 65) return "ذكاء فوق المتوسط";
+  if(s >= 40) return "ذكاء متوسط";
+  return "ذكاء منخفض";
+}
+
+function showResult(){
+  /* العلامة النهائية من 100 = (المجموع ÷ 160) × 100 */
+  const raw = answers.reduce((a,b) => a + b, 0);
+  const score = Math.round(raw / MAX_SCORE * 100);
+
+  show('result');
+  document.getElementById('verdict').textContent = verdict(score);
+
+  const C = 2 * Math.PI * 84;
+  const ring = document.getElementById('ringFg');
+  ring.style.strokeDasharray = C;
+  ring.style.strokeDashoffset = C;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      ring.style.strokeDashoffset = C * (1 - score/100);
+    });
+  });
+
+  let n = 0;
+  const el = document.getElementById('scoreNum');
+  const step = () => {
+    n += Math.max(1, Math.ceil((score - n)/10));
+    if(n >= score) n = score;
+    el.textContent = arNum(n);
+    if(n < score) setTimeout(step, 60);
+  };
+  step();
+}
+
+function restart(){ show('start'); }
+</script>
+</body>
+</html>
